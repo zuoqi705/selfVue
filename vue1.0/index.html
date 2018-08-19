@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue双向绑定</title>
+</head>
+<body>
+<h1 id="test">{{name}}</h1>
+</body>
+<script src="js/observer.js"></script>
+<script src="js/watcher.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript">
+	var el = document.getElementById("test");
+	var vue = new Vue({
+		name:'Hello World'
+	},el,'name');
+	window.setTimeout(function(){
+		console.log('name值改变了');
+		vue.data.name = 'Mavericker';
+	},2000);
+</script>
+</html>
