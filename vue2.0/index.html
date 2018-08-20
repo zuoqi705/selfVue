@@ -4,19 +4,31 @@
 	<title>Vue双向绑定</title>
 </head>
 <body>
-<h1 id="test">{{name}}</h1>
+	<div id="app">
+		<h2>{{title}}</h2>
+		<h1>{{name}}</h1>
+	</div>
 </body>
 <script src="js/observer.js"></script>
 <script src="js/watcher.js"></script>
 <script src="js/index.js"></script>
+<script src="js/compiler.js"></script>
 <script type="text/javascript">
 	var el = document.getElementById("test");
 	var vue = new Vue({
-		name:'Hello World'
-	},el,'name');
+		el:'#app',
+		data:{
+			title:'Hello World',
+			name:''
+		}
+	});
 	window.setTimeout(function(){
 		console.log('name值改变了');
 		vue.name = 'Mavericker';
 	},2000);
+	window.setTimeout(function () {
+		console.log('title值改变了');
+		vue.title = 'Vue2.0';
+	}, 3000);
 </script>
 </html>

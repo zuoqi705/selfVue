@@ -1,14 +1,12 @@
-function Vue(data,el,key){
-	this.data = data;
+function Vue(options){
+	this.vm = this;
 	var self = this;
-	Observe(data);
-	Object.keys(data).forEach(key => {
+	this.data = options.data;
+	Observe(this.data);
+	Object.keys(this.data).forEach(key => {
 		self.proxyKey(key);// 绑定代理属性
 	})
-	el.innerHTML = this.data[key]//初始化模板数据的值
-	new Watcher(this,key,function(value){
-		el.innerHTML = value;
-	});
+	new compiler(this.vm,options.el);
 	return this;//方便链式调用
 }
 
