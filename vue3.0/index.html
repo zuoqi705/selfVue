@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue双向绑定</title>
+</head>
+<style type="text/css">
+#app{
+	text-align: center;
+	margin-top: 10%;
+}
+</style>
+<body>
+	<div id="app">
+		<h1>{{title}}</h1>
+		<input v-model="name" style="font-size: 24px">
+		<h2>{{name}}</h2>
+		<button v-on:click="click" style="font-size: 20px;">点我改变title</button>
+	</div>
+</body>
+<script src="js/observer.js"></script>
+<script src="js/watcher.js"></script>
+<script src="js/index.js"></script>
+<script src="js/compiler.js"></script>
+<script type="text/javascript">
+	var el = document.getElementById("test");
+	var vue = new Vue({
+		el:'#app',
+		data:{
+			title:'Hello World',
+			name:'Mavericker'
+		},
+		methods:{
+			click:function(){
+				this.title = '我变了'
+			}
+		},
+		mounted:function(){
+			window.setTimeout(function () {
+				console.log('title值改变了');
+				vue.title = 'Vue2.0';
+			}, 2000);
+		}
+	});
+
+</script>
+</html>
